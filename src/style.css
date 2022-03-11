@@ -1,0 +1,11 @@
+#nav,
+.nav{
+    display:flex;
+}
+#nav{
+    justify-content: space-between;
+}
+.linksDiv{
+    justify-content:space-between;
+}
+
