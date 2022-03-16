@@ -9,11 +9,13 @@ module.exports = {
     },
     devtool: 'inline-source-map',
     devServer : {
-        static : './dist',
-    },
+        static : './dist',    },
     plugins : [
         new HtmlWebpackPlugin({
             title: 'Restaurant Page',
+            minify:{
+                removeEmptyElements: false,
+            },
         })
     ],
     output : {
@@ -28,9 +30,20 @@ module.exports = {
                 use :['style-loader', 'css-loader'],
             },
             {
-                test: /\.(png|jfif|jpg|jpeg)$/i,
+                test: /\.(png|jfif|jpg|jpeg|svg)$/i,
                 type: 'asset/resource',
-            }
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                type: 'asset/resource',
+            },
+            {
+                test: /\.html$/i,
+                loader: 'html-loader',
+            },
         ],
+    },
+    optimization: {
+        runtimeChunk: 'single',
     },
 };

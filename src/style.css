@@ -1,11 +1,78 @@
-#nav,
-.nav{
+:root{
+    --vivid-tangerine: #FAA087ff;
+    --black: #000000ff;
+    --white: #FFFFFFff;
+    --quick-silver: #9AA5A6ff;
+    --dark-sienna: #30130Cff;
+}
+@font-face{
+    font-family: 'Fredoka';
+    src: url('./fonts/Fredoka.ttf') format('truetype');
+    /* font-weight:600; */
+    font-size:normal;
+}
+@font-face {
+    font-family: 'Fredoka Bold';
+    src: url('./fonts/Fredoka-Bold.ttf') format('truetype');
+}
+html {
+    margin:0;
+    padding:0;
+    font-family:'Fredoka';
+    box-sizing:border-box;  
+}
+.flex{
     display:flex;
 }
-#nav{
-    justify-content: space-between;
+.header{
+    display:flex;
+    justify-content: space-between;    
+    margin:20px 50px;
+    z-index:200;
 }
-.linksDiv{
+.header-item img{
+    width:100px;
+    height:auto;
+    background:pink;
+}
+#home{
+    cursor:pointer;
+}
+#logo{
+    width:50px;
+    height:auto;
+}
+.nav{    
     justify-content:space-between;
 }
+.hero{
+    display:flex;
+    align-items: center;
+    justify-content:center; 
+    height:100vh;
+}
+.header-groups{
+    display:flex;
+}
+.header-item{
+    margin:5px;
+}
+.hero-text{
+    font-family: 'Fredoka Bold';
+    text-align:center;
+    font-size:100px;
+    color: var(--white);    
+    font-weight:bold;
+    text-shadow:1px 1px 6rem black
+}
+.hero-text:hover{
+    color:yellow;
+    text-shadow: none;
+}
+.hero-image{
+    background-image: url('./images/img-1.jpg');
+    background-size:cover;
+    background-position: center center;
+}
+
 
