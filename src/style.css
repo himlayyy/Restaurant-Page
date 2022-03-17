@@ -4,6 +4,8 @@
     --white: #FFFFFFff;
     --quick-silver: #9AA5A6ff;
     --dark-sienna: #30130Cff;
+    --myrtle-green: #207069ff;
+
 }
 @font-face{
     font-family: 'Fredoka';
@@ -20,6 +22,7 @@ html {
     padding:0;
     font-family:'Fredoka';
     box-sizing:border-box;  
+    background-color: var(--white);
 }
 .flex{
     display:flex;
@@ -50,6 +53,7 @@ html {
     align-items: center;
     justify-content:center; 
     height:100vh;
+
 }
 .header-groups{
     display:flex;
@@ -58,21 +62,67 @@ html {
     margin:5px;
 }
 .hero-text{
+    flex-direction: column;
     font-family: 'Fredoka Bold';
     text-align:center;
     font-size:100px;
     color: var(--white);    
     font-weight:bold;
-    text-shadow:1px 1px 6rem black
+    text-shadow:1px 1px 6rem black;
+    z-index: 200;
 }
 .hero-text:hover{
-    color:yellow;
+    color:var(--vivid-tangerine);
     text-shadow: none;
+    
 }
-.hero-image{
-    background-image: url('./images/img-1.jpg');
-    background-size:cover;
+.hero{
+    background-size:contain;
+    background-repeat: no-repeat;
     background-position: center center;
+
 }
-
-
+.hero-home{
+    background-image: url('./images/01.png');
+}
+.hero-menu{
+    background-image: url('./images/vegetarian-taco-bowls.jfif');
+}
+.filter{    
+    background:var(--myrtle-green);
+}
+h3, h2{
+    margin:0px;
+}
+h3{
+    font-size:100px;
+}
+h2{
+    font-size:40px;
+}
+/* .menu{
+    display:flex;
+    justify-content: center;
+    fle
+} */
+.menu-items{ 
+    display:flex;
+    /* grid-template-columns: repeat(3,200px);
+    grid-template-rows:repeat(3,200px);
+    grid-gap: 30px 30px;*/
+    margin:20px 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.menu-item{
+    flex:33%;
+    text-align: center;
+    border:1px solid green;
+    box-sizing: border-box;
+}
+.menu-item img{
+    width:250px;
+    height:auto;
+    object-fit: cover;
+    object-position: center;
+}

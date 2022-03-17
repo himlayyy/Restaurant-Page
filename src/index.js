@@ -12,7 +12,7 @@ homeLoad();
 let menu = document.querySelector("#menu");
 menu.addEventListener("click", function(){
     console.log('in menu!')
-    // removeChildren();
+    removeChildren();
     menuLoad();
 });
 

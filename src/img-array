@@ -1,0 +1,29 @@
+var fs=require('fs') //needed module for reading files
+function getImages(rootDirectory){
+  let slash=process.platform=="win32"?"\\":"/" //different slash for folder logic in different operating systems
+  let isFolder=(path)=>fs.lstatSync(path).isDirectory() //checks if something is a folder or not
+  
+  var folders=fs.readdirSync(rootDirectory)
+  .filter(name=> isFolder(rootDirectory+slash+name) ) //only the folders remain
+  var myImages={} //object that will be structured dynamically
+  folders.forEach(folderName=>{
+    var folder=[] //individual folder(like day1)
+    fs.readdirSync(rootDirectory+slash+folderName)
+    .filter(fileName=>{ //only files which are images(like ".img")
+      let imageArr=['jpg','png','gif'] //image suffixes
+      let suffix=fileName.split('.')[1]
+      let condition=suffix? imageArr.includes(suffix.toLowerCase()): false //if a file is an image(from the name at leasts)
+      return !isFolder(rootDirectory+slash+folderName+slash+fileName) && condition
+    })
+    .forEach(imageName=>{
+      let src=folderName+slash+imageName
+      folder.push({src,data:fs.readFileSync(rootDirectory+slash+src)})
+      //now I really don't know how you're getting "name" and "alt".. maybe you could have a hash mapping of those stuff I guess
+    })
+    myImages[folderName]=folder //places a folder(like day1) into the "myImages" object
+  })
+  return myImages
+}
+
+//usage
+const myImages=getImages(__dirname) //__dirname is the directory of where the program is running
