@@ -1,26 +1,26 @@
 function listen() {
     let heroText = document.querySelector('.hero-text');
-    let hero = document.querySelector(".hero.hero-home");
+    let hero = document.querySelector(".hero");
     heroText.addEventListener("mouseover", function () {
-        // hero.classList.remove('hero-home');
         hero.classList.add('filter');
-        // console.log("doing stuff");
+
     });
 
     heroText.addEventListener("mouseout", function () {
-        // console.log(hero.classList);
-        // hero.classList.add('hero-home');
-        hero.classList.remove('filter')
-        // console.log("doing stuff");
+        hero.classList.remove('filter');
     });
 }
 
-function homeContent() {
+function heroContent() {
+    console.log('in hero content!');
     let hero = document.createElement('div');
-    hero.classList.add("hero", "hero-home");
+    hero.classList.add("hero-home", "hero");
+    hero.setAttribute("id", "hero-div");
+    console.log(hero.classList);
 
     const heroText = document.createElement("div");
     heroText.classList.add("hero-text", "flex");
+    console.log(heroText.classList);
 
     let heroHeading = document.createElement("h2");
     heroHeading.textContent = "ORDER NOW";
@@ -32,18 +32,31 @@ function homeContent() {
     heroText.appendChild(heroSubHeading);
 
     hero.appendChild(heroText);
-    let content = document.getElementById("content");
-    content.appendChild(hero);    
+    document.body.appendChild(hero);
 }
 
-export default function homeLoad() {
-    if (document.getElementById('content') === null) {
-        let content = document.createElement('div');
-        content.setAttribute("id", "content");
-        document.body.appendChild(content);
+function heroSwitch(classList, heading, subHeading) {
+    console.log('in hero switch!');
+
+    let hero = document.getElementById("hero-div");
+    hero.className = "hero";
+    hero.classList.add(classList);
+
+    let heroHeading = document.querySelector("h2");
+    heroHeading.textContent = heading;
+
+    let heroSubHeading = document.querySelector("h3");
+    heroSubHeading.textContent = subHeading;
+}
+
+export default function homeLoad(classList="hero-home", heading="Home heading", subHeading="Home-subheading") {
+    if (document.getElementById("hero-div") === null) {
+        heroContent();
     }
-    console.log(content)
-    homeContent();
+    else {
+        // heroSwitch(classList, heading, subHeading)
+        heroSwitch(classList, heading, subHeading);
+    }
     listen();
 }
 
